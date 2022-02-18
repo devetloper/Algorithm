@@ -1,4 +1,4 @@
-######### Fail with 8/10 of Test case #########
+######### Fail with 9/10 of Test case #########
 T = int(input())
 
 for test_case in range(1, T + 1):
@@ -51,26 +51,25 @@ for test_case in range(1, T + 1):
 
     ### make move function ###
     def move(x,y):
-        try:
-            if len(can_go[x][y]) != 0:
-                for route_x, route_y in can_go[x][y]:
-                    if [goal_x, goal_y] in can_go[route_x][route_y]:
-                        return 1
-                    
-                    else:
-                        push_item([x,y])
-                        for route_x, route_y in can_go[x][y]:
-                            can_go[x][y].remove([route_x,route_y])
-                            return move(route_x, route_y)
+        if len(can_go[x][y]) != 0:
+            for route_x, route_y in can_go[x][y]:
+                if [goal_x, goal_y] in can_go[route_x][route_y]:
+                    return 1
             
-            elif len(can_go[x][y]) == 0:
+                else:
+                    push_item([x,y])
+                    for route_x, route_y in can_go[x][y]:
+                        can_go[x][y].remove([route_x,route_y])
+                        can_go[route_x][route_y].remove([x,y])
+                        return move(route_x, route_y)
+    
+        elif len(can_go[x][y]) == 0:
+            try:
                 poped_x, poped_y = pop_item()
                 return move(poped_x, poped_y)
-        
-        except IndexError:
-            return 0
+            
+            except IndexError:
+                return 0
 
-
-
-    print(f"#{test_case}",move(start_x, start_y))
+    print(f"#{test_case}",move(start_x,start_y))
 
