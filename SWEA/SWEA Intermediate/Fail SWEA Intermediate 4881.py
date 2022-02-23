@@ -54,6 +54,7 @@ for test_case in range(1, T + 1):
         case_sum = sum(case_cord)
         sums.append(case_sum)
     print(f"#{test_case}",min(sums))
+    print(numbers)
     
 
     
