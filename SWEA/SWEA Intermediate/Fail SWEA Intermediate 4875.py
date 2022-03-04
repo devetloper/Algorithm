@@ -18,7 +18,8 @@ for i in range(n):
 stack = []
 
 def search(x,y):
-	pass # if 0 or 3 in up,right,down,left return True
+    if maze[i][j] ==0 or  maze[i][j] ==3:
+        pass
 
 def move(x,y):
 	if search(x,y):
