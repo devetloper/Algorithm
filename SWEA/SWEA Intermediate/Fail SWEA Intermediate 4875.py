@@ -1,12 +1,9 @@
 ### input ###
-#n = int(input())
+n = int(input())
 
-#maze =[]
-#for i in range(n):
-    #maze.append(list(map(int,input()))) # make input code more simply
-
-maze = [[1,3,1,0,1],[1,0,1,0,1],[1,0,1,0,1],[1,0,1,0,1],[1,0,0,2,1]]
-n=5
+maze =[]
+for i in range(n):
+    maze.append(list(map(int,input()))) # make input code more simply
 
 for i in range(n):
     for j in range(n):
@@ -18,16 +15,16 @@ for i in range(n):
 stack = []
 
 def search(x,y):
-    if maze[i][j] ==0 or  maze[i][j] ==3:
+    if maze[i][j] ==3 or ans:
         pass
 
 def move(x,y):
 	if search(x,y):
 		pass 	# move and put in stack
 		
-					
+
+ans = 0
+
 start_x, start_y = start
 print(start_x,start_y)
-print(goal)
-print(search(start_x,start_y))
 
