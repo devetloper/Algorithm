@@ -47,10 +47,45 @@ class LinkedList:
             display.append(cur.data)
         print(display)
 
-linkedlist = LinkedList()
-linkedlist.Append(3)
-linkedlist.Append(4)
-linkedlist.Display()
+    #6
+    def GetData(self,idx):
+        if idx >= self.Length():
+            print("Error")
+            return None
+        cur_idx =0
+        cur_node = self.head
+        while True:
+            cur_node = cur_node.next
+            if cur_idx == idx:
+                print (cur_node.data)
+                break
+            cur_idx += 1
             
+    #7
+    def Erase(self,idx):
+        if idx >= self.Length():
+            print("Error")
+            return None
+        cur_idx = 0
+        cur = self.head
+        while True:
+            last_node = cur
+            cur = cur.next
+            if cur_idx == idx:
+                last_node.next = cur.next
+                return
+            cur_idx += 1 
+
+
+
+test = LinkedList()
+test.Append(0)
+test.Append(1)
+test.Append(2)
+test.Append(3)
+test.Display()
+test.GetData(2)
+test.Erase(2)
+test.Display()
 
 
