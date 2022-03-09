@@ -1,3 +1,4 @@
+
 '''
 To make List
 1. Node class
@@ -75,8 +76,23 @@ class LinkedList:
                 last_node.next = cur.next
                 return
             cur_idx += 1 
-
-
+    
+    #8
+    def Insert(self,idx,data):
+        new_node = Node(data)
+        if idx >= self.Length():
+            print("Error")
+            return None
+        cur_idx = 0
+        cur = self.head
+        while True:
+            cur = cur.next
+            if cur_idx == idx - 1:
+                new_node.next = cur.next
+                cur.next = new_node
+                return 
+            cur_idx += 1
+        	
 
 test = LinkedList()
 test.Append(0)
@@ -85,7 +101,7 @@ test.Append(2)
 test.Append(3)
 test.Display()
 test.GetData(2)
-test.Erase(2)
 test.Display()
-
+test.Insert(2,5)
+test.Display()
 
