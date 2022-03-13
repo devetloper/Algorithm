@@ -1,12 +1,13 @@
+#have to solve Indexerror line 9
 n, m, k = map(int,input().split())
 num_arr = list(map(int,input().split()))
 
 def make_pw(arr, step, cnt, idx):
     if cnt == 0:
         return arr
-    else:
+    else: 
         if idx + step <= len(arr):
-            arr.insert(idx + step, arr[idx+2] + arr[idx+3])
+            arr.insert(idx + step, arr[idx+step -1] + arr[idx+step])
             idx = idx + step
             cnt -= 1
 
