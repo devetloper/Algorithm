@@ -1,14 +1,9 @@
-
-
 class Node:
     def __init__(self, data, left = None, right = None):
         self.data = data
         self.left = left
         self.right = right
 
-class Tree:
-    def __init__(self):
-        self.route = None
 
 e, n = map(int,input().split())
 line_pair = list(map(int,input().split()))
@@ -22,20 +17,22 @@ for i in range(len(line_pair)):
     else:
         children.append(line_pair[i])
 
+tree = {}
 
-node_lst = [i+1 for i in range(e+1)]
+for i in range(len(parents)):
+    if parents[i] not in tree:
+        tree[parents[i]] = Node(parents[i],children[i])
+    else:
+        tree[parents[i]].right = children[i]
 
-mytree = Tree() 
-for num in node_lst:
-    if num not in children:
-        mytree.route = Node(num)
+def pre_order(node):
+    try:
+        print(node.data)
+        if node.left != None:
+            pre_order(tree[node.left])
+        if node.right != None:
+            pre_order(tree[node.right])
+    except KeyError:
+        pass
 
-mytree.route.left = Node(1)
-Node(1).left = Node(3)
-
-print(mytree.route.data)
-print(mytree.route.left.data)
-# print(parents)
-# print(children)
-
-
+pre_order(tree[2])
