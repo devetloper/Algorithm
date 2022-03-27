@@ -40,6 +40,6 @@ for test_case in range(1, T + 1):
         heap_nums.append(num)
         min_heap(heap_nums)
 
-    
+    print(heap_nums)
     ans = sum_parent(heap_nums)
     print(f"#{test_case}",ans)
