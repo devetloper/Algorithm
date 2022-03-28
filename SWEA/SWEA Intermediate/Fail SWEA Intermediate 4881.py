@@ -1,8 +1,5 @@
-### Fail with 5/10 test case (run time error) ###
-### Use backtracking, not using permutation ###
-
-### permutaion fuction ###  (get help)
-def permute(arr):
+#Run Time Error, Not using backtracking (5/10)
+def permute(arr): #get help
     result = [arr[:]]
     c = [0] * len(arr)
     i = 0
@@ -22,39 +19,19 @@ def permute(arr):
 
 T = int(input())
 for test_case in range(1, T + 1):
-
-    ### input ###
     n = int(input())
+    numbers =[]
+    for _ in range(n):
+        row = list(map(int,input().split()))
+        numbers.append(row)
 
-    board = []
-    for i in range(n):
-        row_str = input().split(" ")
-        row = []
-        for j in row_str:
-            row.append(int(j))
-        board.append(row)
+    per = permute(list(range(n)))
 
-    ### make permutation ###
-    numbers = permute(list(range(n)))
-
-    ### find case ###
-    cases = []
-    for cols in numbers:
-        case=[]
-        for i,col in enumerate(cols):
-            case.append([i,col])
-        cases.append(case)
-
-    sums = []
-    for case in cases:
-        case_cord = []
-        for cord in case:
-            x,y = cord
-            case_cord.append(board[x][y])
-        case_sum = sum(case_cord)
-        sums.append(case_sum)
-    print(f"#{test_case}",min(sums))
-    print(numbers)
-    
-
-    
+    min = 99**99
+    for col in per:
+        total = 0
+        for i in range(n):
+            total += numbers[i][col[i]-1]
+        if total < min:
+            min = total
+    print(f"#{test_case}",min)
