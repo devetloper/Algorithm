@@ -1,6 +1,6 @@
 def backtracking(r,v,s):
     global min
-    if r == 3:
+    if r == n:
         if s < min:
             min = s
         return
@@ -15,14 +15,16 @@ def backtracking(r,v,s):
             r -= 1
             s -= numbers[r][i]
             v[i] = 0
-            
-n = int(input())
-numbers =[]
-for _ in range(n):
-    row = list(map(int,input().split()))
-    numbers.append(row)
 
-min=99**99
-visited = [0 for _ in range(n)]
-bt = backtracking(0,visited,0)
-print(min)
+T = int(input())
+for test_case in range(1, T + 1):            
+    n = int(input())
+    numbers =[]
+    for _ in range(n):
+        row = list(map(int,input().split()))
+        numbers.append(row)
+
+    min=99**99
+    visited = [0 for _ in range(n)]
+    bt = backtracking(0,visited,0)
+    print(f"#{test_case}",min)
